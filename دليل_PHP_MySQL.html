@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل PHP و MySQL - StoreOman</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-right: 5px solid #667eea;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .section h4 {
+            color: #555;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        .file-list {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #e0e0e0;
+        }
+
+        .file-list ul {
+            list-style: none;
+            padding-right: 20px;
+        }
+
+        .file-list li {
+            padding: 10px;
+            margin: 8px 0;
+            background: #f0f0f0;
+            border-radius: 5px;
+            border-right: 3px solid #667eea;
+            font-family: 'Courier New', monospace;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.6;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .code-block code {
+            color: #f8f8f2;
+        }
+
+        .command {
+            background: #1e1e1e;
+            color: #4ec9b0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            border-right: 4px solid #4ec9b0;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-right: 5px solid #2196f3;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-right: 5px solid #4caf50;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-right: 5px solid #ff9800;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .error-box {
+            background: #ffebee;
+            border-right: 5px solid #f44336;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .step {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #e0e0e0;
+            position: relative;
+            padding-right: 50px;
+        }
+
+        .step-number {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: #667eea;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: right;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin: 0 5px;
+        }
+
+        .badge-success {
+            background: #4caf50;
+            color: white;
+        }
+
+        .badge-info {
+            background: #2196f3;
+            color: white;
+        }
+
+        .badge-warning {
+            background: #ff9800;
+            color: white;
+        }
+
+        ul, ol {
+            padding-right: 30px;
+            margin: 15px 0;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .icon {
+            font-size: 1.5em;
+            margin-left: 10px;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .toc h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-right: 0;
+        }
+
+        .toc li {
+            padding: 8px 0;
+        }
+
+        .toc a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .highlight {
+            background: #fff9c4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .code-block {
+                font-size: 0.85em;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐘 دليل PHP و MySQL</h1>
+            <p>دليل شامل لإضافة PHP و MySQL لمشروع StoreOman</p>
+        </div>
+
+        <div class="content">
+            <!-- جدول المحتويات -->
+            <div class="toc">
+                <h3>📑 جدول المحتويات</h3>
+                <ul>
+                    <li><a href="#files">الملفات الجديدة المضافة</a></li>
+                    <li><a href="#setup">خطوات التشغيل</a></li>
+                    <li><a href="#services">الخدمات المتاحة</a></li>
+                    <li><a href="#usage">استخدام PHP في المشروع</a></li>
+                    <li><a href="#database">الجداول في قاعدة البيانات</a></li>
+                    <li><a href="#commands">الأوامر المفيدة</a></li>
+                    <li><a href="#troubleshooting">حل المشاكل</a></li>
+                    <li><a href="#security">الأمان</a></li>
+                </ul>
+            </div>
+
+            <!-- الملفات الجديدة -->
+            <div class="section" id="files">
+                <h2><span class="icon">📦</span> الملفات الجديدة المضافة</h2>
+                
+                <div class="file-list">
+                    <ul>
+                        <li>✅ docker-compose.yml - محدث مع PHP و MySQL</li>
+                        <li>✅ nginx.conf - إعدادات Nginx لدعم PHP</li>
+                        <li>✅ config.php - ملف إعدادات الاتصال بقاعدة البيانات</li>
+                        <li>✅ init.sql - ملف تهيئة قاعدة البيانات</li>
+                        <li>✅ test-db.php - صفحة اختبار الاتصال بقاعدة البيانات</li>
+                        <li>✅ api/products.php - API لجلب المنتجات</li>
+                        <li>✅ phpinfo.php - صفحة معلومات PHP (احذفها بعد الاختبار)</li>
+                        <li>✅ env.example - مثال لملف إعدادات MySQL</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- خطوات التشغيل -->
+            <div class="section" id="setup">
+                <h2><span class="icon">🚀</span> خطوات التشغيل</h2>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>إنشاء ملف .env</h4>
+                    <div class="command">cp env.example .env</div>
+                    <p>أو أنشئ الملف يدوياً وعدل القيم:</p>
+                    <div class="code-block">
+MYSQL_ROOT_PASSWORD=rootpassword
+MYSQL_DATABASE=storeoman
+MYSQL_USER=storeoman_user
+MYSQL_PASSWORD=storeoman_pass
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>إيقاف الحاويات القديمة (إن وجدت)</h4>
+                    <div class="command">docker-compose down</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>بناء وتشغيل الحاويات</h4>
+                    <div class="command">docker-compose up -d --build</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>التحقق من الحاويات</h4>
+                    <div class="command">docker-compose ps</div>
+                    <div class="info-box">
+                        <strong>يجب أن ترى 4 حاويات:</strong>
+                        <ul>
+                            <li>storeoman-nginx (الخادم)</li>
+                            <li>storeoman-php (PHP-FPM)</li>
+                            <li>storeoman-mysql (قاعدة البيانات)</li>
+                            <li>storeoman-phpmyadmin (إدارة قاعدة البيانات)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>اختبار PHP</h4>
+                    <p>افتح المتصفح واذهب إلى:</p>
+                    <div class="code-block">http://localhost/phpinfo.php</div>
+                    <div class="success-box">يجب أن ترى صفحة معلومات PHP</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <h4>اختبار قاعدة البيانات</h4>
+                    <p>افتح المتصفح واذهب إلى:</p>
+                    <div class="code-block">http://localhost/test-db.php</div>
+                    <div class="success-box">يجب أن ترى صفحة اختبار قاعدة البيانات</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">7</div>
+                    <h4>الوصول إلى phpMyAdmin</h4>
+                    <p>افتح المتصفح واذهب إلى:</p>
+                    <div class="code-block">http://localhost:8080</div>
+                    <div class="info-box">
+                        <strong>معلومات الدخول:</strong><br>
+                        Server: <span class="highlight">mysql</span><br>
+                        Username: <span class="highlight">storeoman_user</span> (من ملف .env)<br>
+                        Password: <span class="highlight">storeoman_pass</span> (من ملف .env)
+                    </div>
+                </div>
+            </div>
+
+            <!-- الخدمات المتاحة -->
+            <div class="section" id="services">
+                <h2><span class="icon">🌐</span> الخدمات المتاحة</h2>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الخدمة</th>
+                                <th>المنفذ</th>
+                                <th>الوصول</th>
+                                <th>الوصف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>🌐 Nginx</strong></td>
+                                <td>80</td>
+                                <td>http://localhost</td>
+                                <td>خادم الويب - يدعم HTML, CSS, JavaScript, PHP</td>
+                            </tr>
+                            <tr>
+                                <td><strong>🐘 PHP-FPM</strong></td>
+                                <td>-</td>
+                                <td>عبر Nginx</td>
+                                <td>PHP 8.2 - مع PDO, MySQL, JSON</td>
+                            </tr>
+                            <tr>
+                                <td><strong>🗄️ MySQL</strong></td>
+                                <td>3306</td>
+                                <td>localhost:3306</td>
+                                <td>MySQL 8.0 - قاعدة البيانات</td>
+                            </tr>
+                            <tr>
+                                <td><strong>🔧 phpMyAdmin</strong></td>
+                                <td>8080</td>
+                                <td>http://localhost:8080</td>
+                                <td>واجهة إدارة قاعدة البيانات</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box" style="margin-top: 20px;">
+                    <strong>معلومات الاتصال بقاعدة البيانات:</strong><br>
+                    <strong>Server:</strong> mysql (داخل Docker) أو localhost (من خارج Docker)<br>
+                    <strong>Database:</strong> storeoman<br>
+                    <strong>Username:</strong> storeoman_user<br>
+                    <strong>Password:</strong> storeoman_pass<br>
+                    <strong>Port:</strong> 3306
+                </div>
+            </div>
+
+            <!-- استخدام PHP -->
+            <div class="section" id="usage">
+                <h2><span class="icon">💻</span> استخدام PHP في المشروع</h2>
+
+                <h3>1. الاتصال بقاعدة البيانات</h3>
+                <div class="code-block">
+&lt;?php
+require_once 'config.php';
+
+$pdo = getDBConnection();
+$stmt = $pdo->query("SELECT * FROM products");
+$products = $stmt->fetchAll();
+?&gt;
+                </div>
+
+                <h3>2. مثال: جلب المنتجات</h3>
+                <div class="code-block">
+&lt;?php
+require_once 'config.php';
+
+try {
+    $pdo = getDBConnection();
+    $stmt = $pdo->query("SELECT * FROM products");
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    foreach ($products as $product) {
+        echo $product['name'] . ' - ' . $product['price'] . ' ر.ع&lt;br&gt;';
+    }
+} catch (PDOException $e) {
+    echo "خطأ: " . $e->getMessage();
+}
+?&gt;
+                </div>
+
+                <h3>3. مثال: إدراج بيانات</h3>
+                <div class="code-block">
+&lt;?php
+require_once 'config.php';
+
+try {
+    $pdo = getDBConnection();
+    $stmt = $pdo->prepare("INSERT INTO products (name, description, price, category, stock) VALUES (?, ?, ?, ?, ?)");
+    $stmt->execute(['منتج جديد', 'وصف المنتج', 100.00, 'فئة', 50]);
+    echo "تم إضافة المنتج بنجاح!";
+} catch (PDOException $e) {
+    echo "خطأ: " . $e->getMessage();
+}
+?&gt;
+                </div>
+
+                <h3>4. استخدام API</h3>
+                <p>جلب المنتجات عبر API:</p>
+                <div class="code-block">http://localhost/api/products.php</div>
+                <p>النتيجة ستكون JSON:</p>
+                <div class="code-block">
+{
+  "success": true,
+  "count": 6,
+  "products": [...]
+}
+                </div>
+            </div>
+
+            <!-- الجداول -->
+            <div class="section" id="database">
+                <h2><span class="icon">🗄️</span> الجداول في قاعدة البيانات</h2>
+
+                <h3>📦 products - جدول المنتجات</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الحقل</th>
+                                <th>النوع</th>
+                                <th>الوصف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>id</td><td>INT</td><td>المعرف الفريد (PRIMARY KEY)</td></tr>
+                            <tr><td>name</td><td>VARCHAR(255)</td><td>اسم المنتج</td></tr>
+                            <tr><td>description</td><td>TEXT</td><td>وصف المنتج</td></tr>
+                            <tr><td>price</td><td>DECIMAL(10,2)</td><td>السعر</td></tr>
+                            <tr><td>image</td><td>VARCHAR(255)</td><td>مسار الصورة</td></tr>
+                            <tr><td>category</td><td>VARCHAR(100)</td><td>الفئة</td></tr>
+                            <tr><td>stock</td><td>INT</td><td>الكمية المتوفرة</td></tr>
+                            <tr><td>created_at</td><td>TIMESTAMP</td><td>تاريخ الإنشاء</td></tr>
+                            <tr><td>updated_at</td><td>TIMESTAMP</td><td>تاريخ التحديث</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>👤 users - جدول المستخدمين</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الحقل</th>
+                                <th>النوع</th>
+                                <th>الوصف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>id</td><td>INT</td><td>المعرف الفريد (PRIMARY KEY)</td></tr>
+                            <tr><td>username</td><td>VARCHAR(100)</td><td>اسم المستخدم (UNIQUE)</td></tr>
+                            <tr><td>email</td><td>VARCHAR(255)</td><td>البريد الإلكتروني (UNIQUE)</td></tr>
+                            <tr><td>password</td><td>VARCHAR(255)</td><td>كلمة المرور (مشفرة)</td></tr>
+                            <tr><td>full_name</td><td>VARCHAR(255)</td><td>الاسم الكامل</td></tr>
+                            <tr><td>phone</td><td>VARCHAR(20)</td><td>رقم الهاتف</td></tr>
+                            <tr><td>created_at</td><td>TIMESTAMP</td><td>تاريخ التسجيل</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>🛒 orders - جدول الطلبات</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الحقل</th>
+                                <th>النوع</th>
+                                <th>الوصف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>id</td><td>INT</td><td>المعرف الفريد (PRIMARY KEY)</td></tr>
+                            <tr><td>user_id</td><td>INT</td><td>معرف المستخدم (FOREIGN KEY)</td></tr>
+                            <tr><td>total_amount</td><td>DECIMAL(10,2)</td><td>المبلغ الإجمالي</td></tr>
+                            <tr><td>status</td><td>VARCHAR(50)</td><td>حالة الطلب (pending, completed, etc.)</td></tr>
+                            <tr><td>shipping_address</td><td>TEXT</td><td>عنوان الشحن</td></tr>
+                            <tr><td>created_at</td><td>TIMESTAMP</td><td>تاريخ الطلب</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>📋 order_items - جدول تفاصيل الطلب</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الحقل</th>
+                                <th>النوع</th>
+                                <th>الوصف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>id</td><td>INT</td><td>المعرف الفريد (PRIMARY KEY)</td></tr>
+                            <tr><td>order_id</td><td>INT</td><td>معرف الطلب (FOREIGN KEY)</td></tr>
+                            <tr><td>product_id</td><td>INT</td><td>معرف المنتج (FOREIGN KEY)</td></tr>
+                            <tr><td>quantity</td><td>INT</td><td>الكمية</td></tr>
+                            <tr><td>price</td><td>DECIMAL(10,2)</td><td>السعر</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- الأوامر المفيدة -->
+            <div class="section" id="commands">
+                <h2><span class="icon">🔧</span> الأوامر المفيدة</h2>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الوصف</th>
+                                <th>الأمر</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>▶️ تشغيل جميع الخدمات</td>
+                                <td><code>docker-compose up -d</code></td>
+                            </tr>
+                            <tr>
+                                <td>🛑 إيقاف جميع الخدمات</td>
+                                <td><code>docker-compose down</code></td>
+                            </tr>
+                            <tr>
+                                <td>🔄 إعادة تشغيل</td>
+                                <td><code>docker-compose restart</code></td>
+                            </tr>
+                            <tr>
+                                <td>📊 عرض الحالة</td>
+                                <td><code>docker-compose ps</code></td>
+                            </tr>
+                            <tr>
+                                <td>📝 عرض السجلات (جميع الخدمات)</td>
+                                <td><code>docker-compose logs -f</code></td>
+                            </tr>
+                            <tr>
+                                <td>📝 عرض سجلات Nginx</td>
+                                <td><code>docker-compose logs -f nginx</code></td>
+                            </tr>
+                            <tr>
+                                <td>📝 عرض سجلات PHP</td>
+                                <td><code>docker-compose logs -f php</code></td>
+                            </tr>
+                            <tr>
+                                <td>📝 عرض سجلات MySQL</td>
+                                <td><code>docker-compose logs -f mysql</code></td>
+                            </tr>
+                            <tr>
+                                <td>🔨 إعادة بناء</td>
+                                <td><code>docker-compose up -d --build</code></td>
+                            </tr>
+                            <tr>
+                                <td>🗑️ حذف قاعدة البيانات (احذر!)</td>
+                                <td><code>docker-compose down -v</code></td>
+                            </tr>
+                            <tr>
+                                <td>💾 نسخ احتياطي لقاعدة البيانات</td>
+                                <td><code>docker exec storeoman-mysql mysqldump -u storeoman_user -pstoreoman_pass storeoman > backup.sql</code></td>
+                            </tr>
+                            <tr>
+                                <td>📥 استعادة قاعدة البيانات</td>
+                                <td><code>docker exec -i storeoman-mysql mysql -u storeoman_user -pstoreoman_pass storeoman < backup.sql</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- حل المشاكل -->
+            <div class="section" id="troubleshooting">
+                <h2><span class="icon">🐛</span> حل المشاكل</h2>
+
+                <div class="error-box">
+                    <h4>❌ المشكلة: PHP لا يعمل</h4>
+                    <p><strong>الحل:</strong></p>
+                    <ol>
+                        <li>تحقق من أن حاوية PHP تعمل: <code>docker ps</code></li>
+                        <li>تحقق من السجلات: <code>docker-compose logs php</code></li>
+                        <li>تأكد من أن nginx.conf موجود وصحيح</li>
+                    </ol>
+                </div>
+
+                <div class="error-box">
+                    <h4>❌ المشكلة: لا يمكن الاتصال بقاعدة البيانات</h4>
+                    <p><strong>الحل:</strong></p>
+                    <ol>
+                        <li>تحقق من أن حاوية MySQL تعمل: <code>docker ps</code></li>
+                        <li>تحقق من ملف .env</li>
+                        <li>تحقق من السجلات: <code>docker-compose logs mysql</code></li>
+                        <li>انتظر قليلاً حتى تبدأ MySQL (قد يستغرق 30 ثانية)</li>
+                    </ol>
+                </div>
+
+                <div class="error-box">
+                    <h4>❌ المشكلة: المنفذ 80 أو 3306 مستخدم</h4>
+                    <p><strong>الحل:</strong></p>
+                    <p>غير المنافذ في docker-compose.yml:</p>
+                    <div class="code-block">
+ports:
+  - "8080:80"      # بدلاً من "80:80"
+  - "3307:3306"    # بدلاً من "3306:3306"
+                    </div>
+                </div>
+
+                <div class="error-box">
+                    <h4>❌ المشكلة: قاعدة البيانات فارغة</h4>
+                    <p><strong>الحل:</strong></p>
+                    <ol>
+                        <li>تأكد من وجود ملف init.sql</li>
+                        <li>احذف الحاوية وأعد تشغيلها:</li>
+                    </ol>
+                    <div class="command">docker-compose down -v</div>
+                    <div class="command">docker-compose up -d</div>
+                </div>
+            </div>
+
+            <!-- الأمان -->
+            <div class="section" id="security">
+                <h2><span class="icon">🔒</span> الأمان</h2>
+
+                <div class="warning-box">
+                    <h4>⚠️ مهم جداً:</h4>
+                    <ol>
+                        <li><strong>غير كلمات المرور</strong> في ملف .env قبل النشر</li>
+                        <li><strong>احذف ملف phpinfo.php</strong> بعد الاختبار</li>
+                        <li><strong>لا ترفع ملف .env</strong> إلى Git</li>
+                        <li><strong>استخدم prepared statements</strong> دائماً في PHP</li>
+                        <li><strong>قم بتشفير كلمات المرور</strong> في قاعدة البيانات (استخدم password_hash)</li>
+                        <li><strong>استخدم HTTPS</strong> في الإنتاج</li>
+                        <li><strong>راجع صلاحيات الملفات</strong> على VPS</li>
+                    </ol>
+                </div>
+
+                <h3>مثال: تشفير كلمة المرور</h3>
+                <div class="code-block">
+&lt;?php
+// عند التسجيل
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+// عند تسجيل الدخول
+if (password_verify($_POST['password'], $hashed_password)) {
+    // كلمة المرور صحيحة
+}
+?&gt;
+                </div>
+            </div>
+
+            <!-- ملاحظات -->
+            <div class="section">
+                <h2><span class="icon">📝</span> ملاحظات مهمة</h2>
+                <ul>
+                    <li>البيانات في قاعدة البيانات محفوظة في volume اسمه <span class="highlight">mysql_data</span></li>
+                    <li>يمكنك الوصول لـ MySQL من خارج Docker على المنفذ 3306</li>
+                    <li>phpMyAdmin متاح على المنفذ 8080</li>
+                    <li>جميع ملفات PHP يجب أن تكون في المجلد الرئيسي أو مجلدات فرعية</li>
+                    <li>Nginx يبحث عن <span class="highlight">index.php</span> قبل <span class="highlight">index.html</span></li>
+                    <li>يمكنك تغيير إعدادات MySQL في ملف <span class="highlight">.env</span></li>
+                </ul>
+            </div>
+
+            <!-- خاتمة -->
+            <div class="success-box" style="text-align: center; padding: 30px;">
+                <h2 style="color: #4caf50; margin-bottom: 15px;">✅ تم!</h2>
+                <p style="font-size: 1.2em;">الآن مشروعك يدعم PHP و MySQL</p>
+                <p style="margin-top: 10px; opacity: 0.8;">استمتع بالعمل على مشروعك! 🎉</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

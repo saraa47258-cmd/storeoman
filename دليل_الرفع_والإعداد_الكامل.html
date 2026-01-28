@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل الرفع والإعداد الكامل - StoreOman</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-right: 5px solid #667eea;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .step {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #e0e0e0;
+            position: relative;
+            padding-right: 60px;
+        }
+
+        .step-number {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.6;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .command {
+            background: #1e1e1e;
+            color: #4ec9b0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            border-right: 4px solid #4ec9b0;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-right: 5px solid #2196f3;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-right: 5px solid #ff9800;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-right: 5px solid #4caf50;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .path-box {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-right: 3px solid #667eea;
+            font-family: 'Courier New', monospace;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .file-list {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #e0e0e0;
+        }
+
+        .file-list ul {
+            list-style: none;
+            padding-right: 20px;
+        }
+
+        .file-list li {
+            padding: 10px;
+            margin: 8px 0;
+            background: #f0f0f0;
+            border-radius: 5px;
+            border-right: 3px solid #667eea;
+            font-family: 'Courier New', monospace;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: right;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        .highlight {
+            background: #fff9c4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        ul, ol {
+            padding-right: 30px;
+            margin: 15px 0;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📤 دليل الرفع والإعداد الكامل</h1>
+            <p>دليل شامل من البداية لرفع مشروع StoreOman على VPS</p>
+        </div>
+
+        <div class="content">
+            <!-- الجزء 1: أين ترفع الملفات -->
+            <div class="section">
+                <h2>📍 الجزء الأول: أين ترفع الملفات على VPS؟</h2>
+
+                <div class="info-box">
+                    <h3>❓ هل ترفع في root؟</h3>
+                    <p><strong>لا، لا ترفع في root مباشرة!</strong> يجب إنشاء مجلد خاص للمشروع.</p>
+                </div>
+
+                <h3>المسارات الشائعة على VPS:</h3>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المسار</th>
+                                <th>الاستخدام</th>
+                                <th>متى تستخدمه</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>/home/username/storeoman</code></td>
+                                <td>مجلد المستخدم</td>
+                                <td>✅ موصى به - للمشاريع الشخصية</td>
+                            </tr>
+                            <tr>
+                                <td><code>/var/www/storeoman</code></td>
+                                <td>مجلد الويب القياسي</td>
+                                <td>✅ جيد - للمشاريع الإنتاجية</td>
+                            </tr>
+                            <tr>
+                                <td><code>/opt/storeoman</code></td>
+                                <td>مجلد البرامج</td>
+                                <td>✅ جيد - للمشاريع الكبيرة</td>
+                            </tr>
+                            <tr>
+                                <td><code>/root/storeoman</code></td>
+                                <td>مجلد root</td>
+                                <td>❌ غير موصى به - للأمان</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ تحذير:</strong> لا ترفع الملفات في <code>/root</code> مباشرة. استخدم مجلد منفصل للمشروع.
+                </div>
+
+                <div class="success-box">
+                    <strong>✅ المسار الموصى به:</strong><br>
+                    <div class="path-box">/home/username/storeoman</div>
+                    أو<br>
+                    <div class="path-box">/var/www/storeoman</div>
+                </div>
+            </div>
+
+            <!-- الجزء 2: خطوات الرفع -->
+            <div class="section">
+                <h2>📤 الجزء الثاني: خطوات رفع الملفات</h2>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>الاتصال بـ VPS عبر SSH</h3>
+                    <div class="command">ssh username@your-vps-ip</div>
+                    <p>مثال:</p>
+                    <div class="command">ssh root@192.168.1.100</div>
+                    <p>أو</p>
+                    <div class="command">ssh user@yourdomain.com</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>إنشاء مجلد المشروع</h3>
+                    <p>اختر أحد المسارات التالية:</p>
+                    
+                    <h4>الخيار الأول: في مجلد المستخدم (موصى به)</h4>
+                    <div class="command">mkdir -p /home/$(whoami)/storeoman</div>
+                    <div class="command">cd /home/$(whoami)/storeoman</div>
+
+                    <h4>الخيار الثاني: في /var/www</h4>
+                    <div class="command">sudo mkdir -p /var/www/storeoman</div>
+                    <div class="command">sudo chown -R $USER:$USER /var/www/storeoman</div>
+                    <div class="command">cd /var/www/storeoman</div>
+
+                    <h4>الخيار الثالث: في /opt</h4>
+                    <div class="command">sudo mkdir -p /opt/storeoman</div>
+                    <div class="command">sudo chown -R $USER:$USER /opt/storeoman</div>
+                    <div class="command">cd /opt/storeoman</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>رفع الملفات باستخدام WinSCP</h3>
+                    
+                    <h4>أ. فتح WinSCP</h4>
+                    <ul>
+                        <li>شغّل برنامج WinSCP</li>
+                        <li>انقر على "New Session"</li>
+                    </ul>
+
+                    <h4>ب. إدخال معلومات الاتصال:</h4>
+                    <div class="info-box">
+                        <strong>File protocol:</strong> SFTP<br>
+                        <strong>Host name:</strong> [عنوان IP الخاص بـ VPS]<br>
+                        <strong>Port number:</strong> 22<br>
+                        <strong>User name:</strong> [اسم المستخدم]<br>
+                        <strong>Password:</strong> [كلمة المرور]
+                    </div>
+
+                    <h4>ج. الاتصال والرفع:</h4>
+                    <ul>
+                        <li>انقر "Login"</li>
+                        <li>في الجانب الأيسر: مجلد المشروع على جهازك</li>
+                        <li>في الجانب الأيمن: المجلد الذي أنشأته على VPS</li>
+                        <li>اسحب جميع الملفات من اليسار إلى اليمين</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>التحقق من الملفات المرفوعة</h3>
+                    <p>ارجع إلى SSH وتأكد من وجود جميع الملفات:</p>
+                    <div class="command">ls -la</div>
+                    <p>يجب أن ترى:</p>
+                    <div class="file-list">
+                        <ul>
+                            <li>docker-compose.yml</li>
+                            <li>Dockerfile.php</li>
+                            <li>nginx.conf</li>
+                            <li>config.php</li>
+                            <li>init-postgres.sql</li>
+                            <li>index.html</li>
+                            <li>styles.css</li>
+                            <li>وغيرها...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الجزء 3: الإعدادات -->
+            <div class="section">
+                <h2>⚙️ الجزء الثالث: الإعدادات على VPS</h2>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>تثبيت Docker و Docker Compose</h3>
+                    <div class="command"># تحديث النظام</div>
+                    <div class="command">sudo apt update</div>
+                    <div class="command">sudo apt upgrade -y</div>
+
+                    <div class="command"># تثبيت Docker</div>
+                    <div class="command">sudo apt install -y docker.io docker-compose</div>
+
+                    <div class="command"># تشغيل Docker تلقائياً</div>
+                    <div class="command">sudo systemctl enable docker</div>
+                    <div class="command">sudo systemctl start docker</div>
+
+                    <div class="command"># إضافة المستخدم لمجموعة docker</div>
+                    <div class="command">sudo usermod -aG docker $USER</div>
+
+                    <div class="warning-box">
+                        <strong>⚠️ مهم:</strong> بعد إضافة المستخدم لمجموعة docker، يجب الخروج وإعادة الدخول مرة أخرى.
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>التحقق من تثبيت Docker</h3>
+                    <div class="command">docker --version</div>
+                    <div class="command">docker-compose --version</div>
+                    <div class="command">docker ps</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>إنشاء ملف .env</h3>
+                    <div class="command">cd /home/$(whoami)/storeoman</div>
+                    <div class="command"># أو المسار الذي رفعت فيه الملفات</div>
+                    <div class="command">cp env.example .env</div>
+                    <div class="command">nano .env</div>
+
+                    <p>عدل الملف بالشكل التالي:</p>
+                    <div class="code-block">
+DB_TYPE=pgsql
+POSTGRES_HOST=postgres_db
+POSTGRES_DB=storeoman
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_PORT=5432
+                    </div>
+
+                    <p>احفظ الملف: <strong>Ctrl+O</strong> ثم <strong>Enter</strong> ثم <strong>Ctrl+X</strong></p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>التحقق من postgres-docker</h3>
+                    <div class="command"># تحقق من أن postgres-docker يعمل</div>
+                    <div class="command">docker ps | grep postgres</div>
+
+                    <div class="command"># تحقق من اسم network</div>
+                    <div class="command">docker network ls</div>
+
+                    <div class="info-box">
+                        <strong>ملاحظة:</strong> ابحث عن network اسمه <code>postgres-docker_default</code> أو شبيه به.
+                        إذا كان الاسم مختلفاً، ستحتاج لتعديل <code>docker-compose.yml</code>.
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>تعديل docker-compose.yml (إن لزم الأمر)</h3>
+                    <p>إذا كان اسم network مختلف، افتح الملف وعدله:</p>
+                    <div class="command">nano docker-compose.yml</div>
+                    <p>ابحث عن السطر:</p>
+                    <div class="code-block">
+postgres-docker_default:
+  external: true
+                    </div>
+                    <p>وغيره إلى اسم network الصحيح الذي وجدته في الخطوة السابقة.</p>
+                </div>
+            </div>
+
+            <!-- الجزء 4: إنشاء قاعدة البيانات -->
+            <div class="section">
+                <h2>🗄️ الجزء الرابع: إنشاء قاعدة البيانات</h2>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>الاتصال بـ PostgreSQL</h3>
+                    <div class="command">docker exec -it postgres_db psql -U postgres</div>
+                    <div class="warning-box">
+                        <strong>ملاحظة:</strong> إذا كان اسم الحاوية مختلفاً (مثلاً <code>postgres</code> بدلاً من <code>postgres_db</code>)،
+                        استخدم الاسم الصحيح. تحقق من: <code>docker ps | grep postgres</code>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>إنشاء قاعدة البيانات</h3>
+                    <p>بعد الاتصال، نفذ الأوامر التالية:</p>
+                    <div class="code-block">
+-- إنشاء قاعدة البيانات
+CREATE DATABASE storeoman;
+
+-- التحقق من إنشاء قاعدة البيانات
+\l
+
+-- الخروج
+\q
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>تنفيذ ملف init-postgres.sql</h3>
+                    <div class="command"># تأكد من أنك في مجلد المشروع</div>
+                    <div class="command">cd /home/$(whoami)/storeoman</div>
+
+                    <div class="command"># تنفيذ ملف SQL</div>
+                    <div class="command">docker exec -i postgres_db psql -U postgres -d storeoman < init-postgres.sql</div>
+
+                    <div class="success-box">
+                        إذا نجح الأمر، ستتم تهيئة الجداول وإدراج البيانات التجريبية.
+                    </div>
+                </div>
+            </div>
+
+            <!-- الجزء 5: تشغيل المشروع -->
+            <div class="section">
+                <h2>🚀 الجزء الخامس: تشغيل المشروع</h2>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>الانتقال إلى مجلد المشروع</h3>
+                    <div class="command">cd /home/$(whoami)/storeoman</div>
+                    <div class="command"># أو المسار الذي رفعت فيه الملفات</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>بناء وتشغيل الحاويات</h3>
+                    <div class="command">docker-compose up -d --build</div>
+                    <div class="info-box">
+                        هذا الأمر سيقوم بـ:
+                        <ul>
+                            <li>بناء صورة PHP مع دعم PostgreSQL</li>
+                            <li>تشغيل Nginx</li>
+                            <li>تشغيل PHP-FPM</li>
+                            <li>ربط المشروع مع postgres-docker</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>التحقق من الحاويات</h3>
+                    <div class="command">docker-compose ps</div>
+                    <p>يجب أن ترى:</p>
+                    <ul>
+                        <li><strong>storeoman-nginx</strong> - Running</li>
+                        <li><strong>storeoman-php</strong> - Running</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>اختبار الاتصال</h3>
+                    <p>افتح المتصفح واذهب إلى:</p>
+                    <div class="code-block">http://your-vps-ip/test-db.php</div>
+                    <p>أو إذا كان لديك دومين:</p>
+                    <div class="code-block">http://yourdomain.com/test-db.php</div>
+
+                    <div class="success-box">
+                        يجب أن ترى رسالة: <strong>✅ الاتصال بقاعدة البيانات نجح!</strong>
+                        ونوع قاعدة البيانات: <strong>PGSQL</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الجزء 6: فتح المنافذ -->
+            <div class="section">
+                <h2>🔓 الجزء السادس: فتح المنافذ في جدار الحماية</h2>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>إذا كنت تستخدم UFW</h3>
+                    <div class="command">sudo ufw allow 80/tcp</div>
+                    <div class="command">sudo ufw allow 443/tcp</div>
+                    <div class="command">sudo ufw reload</div>
+                    <div class="command">sudo ufw status</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>إذا كنت تستخدم firewalld</h3>
+                    <div class="command">sudo firewall-cmd --permanent --add-port=80/tcp</div>
+                    <div class="command">sudo firewall-cmd --permanent --add-port=443/tcp</div>
+                    <div class="command">sudo firewall-cmd --reload</div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ مهم:</strong> بعض مزودي VPS (مثل DigitalOcean, AWS) لديهم جدار حماية إضافي في لوحة التحكم.
+                    تأكد من فتح المنافذ من هناك أيضاً.
+                </div>
+            </div>
+
+            <!-- الجزء 7: حل المشاكل -->
+            <div class="section">
+                <h2>🐛 الجزء السابع: حل المشاكل الشائعة</h2>
+
+                <div class="warning-box">
+                    <h4>❌ المشكلة: لا يمكن الاتصال بـ PostgreSQL</h4>
+                    <p><strong>الحل:</strong></p>
+                    <ol>
+                        <li>تحقق من أن postgres-docker يعمل: <code>docker ps | grep postgres</code></li>
+                        <li>تحقق من اسم network: <code>docker network ls</code></li>
+                        <li>تحقق من اسم حاوية PostgreSQL في docker-compose.yml</li>
+                        <li>تحقق من السجلات: <code>docker-compose logs php</code></li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    <h4>❌ المشكلة: Permission denied</h4>
+                    <p><strong>الحل:</strong></p>
+                    <div class="command">sudo chown -R $USER:$USER /home/$(whoami)/storeoman</div>
+                    <div class="command">sudo chmod -R 755 /home/$(whoami)/storeoman</div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>❌ المشكلة: المنفذ 80 مستخدم</h4>
+                    <p><strong>الحل:</strong></p>
+                    <p>غير المنفذ في docker-compose.yml:</p>
+                    <div class="code-block">
+ports:
+  - "8080:80"  # بدلاً من "80:80"
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>❌ المشكلة: network غير موجود</h4>
+                    <p><strong>الحل:</strong></p>
+                    <ol>
+                        <li>تحقق من اسم network: <code>docker network ls</code></li>
+                        <li>عدل docker-compose.yml واستبدل <code>postgres-docker_default</code> بالاسم الصحيح</li>
+                        <li>أو أنشئ network جديد: <code>docker network create postgres-docker_default</code></li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ملخص -->
+            <div class="section">
+                <h2>📋 ملخص الخطوات</h2>
+                <ol>
+                    <li>✅ الاتصال بـ VPS عبر SSH</li>
+                    <li>✅ إنشاء مجلد المشروع (مثلاً: <code>/home/username/storeoman</code>)</li>
+                    <li>✅ رفع الملفات باستخدام WinSCP</li>
+                    <li>✅ تثبيت Docker و Docker Compose</li>
+                    <li>✅ إنشاء ملف .env</li>
+                    <li>✅ التحقق من postgres-docker</li>
+                    <li>✅ إنشاء قاعدة البيانات في PostgreSQL</li>
+                    <li>✅ تنفيذ init-postgres.sql</li>
+                    <li>✅ تشغيل المشروع: <code>docker-compose up -d --build</code></li>
+                    <li>✅ فتح المنافذ في جدار الحماية</li>
+                    <li>✅ اختبار الاتصال</li>
+                </ol>
+            </div>
+
+            <!-- خاتمة -->
+            <div class="success-box" style="text-align: center; padding: 30px;">
+                <h2 style="color: #4caf50; margin-bottom: 15px;">✅ تم!</h2>
+                <p style="font-size: 1.2em;">مشروعك الآن جاهز ويعمل على VPS</p>
+                <p style="margin-top: 10px; opacity: 0.8;">استمتع بالعمل على مشروعك! 🎉</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

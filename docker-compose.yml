@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  # Nginx Web Server
+  nginx:
+    image: nginx:alpine
+    container_name: storeoman-nginx
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    networks:
+      - storeoman-network
+
+  # PHP-FPM Service
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile.php
+    container_name: storeoman-php
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - PHP_INI_SCAN_DIR=/usr/local/etc/php/conf.d
+    networks:
+      - storeoman-network
+      # ربط مع postgres-docker network
+      - postgres-docker_default
+
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: storeoman-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-storeoman}
+      MYSQL_USER: ${MYSQL_USER:-storeoman_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-storeoman_pass}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "3306:3306"
+    networks:
+      - storeoman-network
+
+  # phpMyAdmin (اختياري - لإدارة قاعدة البيانات)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: storeoman-phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: ${MYSQL_USER:-storeoman_user}
+      PMA_PASSWORD: ${MYSQL_PASSWORD:-storeoman_pass}
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    networks:
+      - storeoman-network
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  storeoman-network:
+    driver: bridge
+  # ربط مع network الخاص بـ postgres-docker
+  postgres-docker_default:
+    external: true
