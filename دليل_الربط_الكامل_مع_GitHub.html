@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل الربط الكامل مع GitHub - StoreOman</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-right: 5px solid #667eea;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .step {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #e0e0e0;
+            position: relative;
+            padding-right: 60px;
+        }
+
+        .step-number {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.6;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .command {
+            background: #1e1e1e;
+            color: #4ec9b0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            border-right: 4px solid #4ec9b0;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-right: 5px solid #2196f3;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-right: 5px solid #ff9800;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-right: 5px solid #4caf50;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .error-box {
+            background: #ffebee;
+            border-right: 5px solid #f44336;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        ul, ol {
+            padding-right: 30px;
+            margin: 15px 0;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .highlight {
+            background: #fff9c4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔗 دليل الربط الكامل مع GitHub</h1>
+            <p>دليل شامل من البداية لربط المشروع على VPS مع GitHub</p>
+        </div>
+
+        <div class="content">
+            <!-- الجزء 1: المتطلبات -->
+            <div class="section">
+                <h2>📋 الجزء الأول: المتطلبات</h2>
+                
+                <div class="info-box">
+                    <h3>ما تحتاجه:</h3>
+                    <ul>
+                        <li>✅ حساب على GitHub</li>
+                        <li>✅ VPS مع SSH</li>
+                        <li>✅ Git مثبت على VPS</li>
+                        <li>✅ Repository على GitHub</li>
+                        <li>✅ Personal Access Token</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- الجزء 2: إنشاء Personal Access Token -->
+            <div class="section">
+                <h2>🔑 الجزء الثاني: إنشاء Personal Access Token</h2>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>الذهاب إلى إعدادات GitHub</h3>
+                    <p>افتح المتصفح واذهب إلى:</p>
+                    <div class="code-block">https://github.com/settings/tokens</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>إنشاء Token جديد</h3>
+                    <ul>
+                        <li>انقر على "Generate new token"</li>
+                        <li>اختر "Generate new token (classic)"</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>إعدادات Token</h3>
+                    <ul>
+                        <li><strong>Note:</strong> StoreOman VPS</li>
+                        <li><strong>Expiration:</strong> اختر المدة المناسبة</li>
+                        <li><strong>Select scopes:</strong> اختر <span class="highlight">repo</span> (كل الصلاحيات)</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>نسخ Token</h3>
+                    <div class="warning-box">
+                        <strong>⚠️ مهم جداً:</strong> انسخ الـ Token الآن! لن يظهر مرة أخرى.
+                    </div>
+                    <p>احفظه في مكان آمن - ستحتاجه لاحقاً.</p>
+                </div>
+            </div>
+
+            <!-- الجزء 3: الاتصال بـ VPS -->
+            <div class="section">
+                <h2>💻 الجزء الثالث: الاتصال بـ VPS</h2>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>فتح Terminal أو SSH Client</h3>
+                    <p>استخدم:</p>
+                    <ul>
+                        <li>PuTTY (Windows)</li>
+                        <li>Terminal (Mac/Linux)</li>
+                        <li>Windows PowerShell</li>
+                        <li>أي SSH client آخر</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>الاتصال بـ VPS</h3>
+                    <div class="command">ssh username@your-vps-ip</div>
+                    <p>مثال:</p>
+                    <div class="command">ssh root@192.168.1.100</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>التحقق من الاتصال</h3>
+                    <p>بعد الاتصال، يجب أن ترى سطر الأوامر:</p>
+                    <div class="code-block">root@srv1278630:~#</div>
+                </div>
+            </div>
+
+            <!-- الجزء 4: تثبيت Git -->
+            <div class="section">
+                <h2>📦 الجزء الرابع: تثبيت Git على VPS</h2>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>التحقق من تثبيت Git</h3>
+                    <div class="command">git --version</div>
+                    <p>إذا ظهر رقم الإصدار، Git مثبت. إذا ظهر "command not found"، قم بتثبيته.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>تثبيت Git (إذا لم يكن مثبتاً)</h3>
+                    <div class="command">sudo apt update</div>
+                    <div class="command">sudo apt install -y git</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>إعداد Git (للمرة الأولى)</h3>
+                    <div class="command">git config --global user.name "StoreOman VPS"</div>
+                    <div class="command">git config --global user.email "vps@storeoman.com"</div>
+                </div>
+            </div>
+
+            <!-- الجزء 5: ربط المشروع مع GitHub -->
+            <div class="section">
+                <h2>🔗 الجزء الخامس: ربط المشروع مع GitHub</h2>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>الانتقال إلى مجلد المشروع</h3>
+                    <div class="command">cd /var/www/alshabibi/storeoman</div>
+                    <div class="info-box">
+                        تأكد من أنك في المجلد الصحيح!
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>تهيئة Git في المشروع</h3>
+                    <div class="command">git init</div>
+                    <p>هذا الأمر ينشئ مجلد <code>.git</code> في المشروع.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>ربط المشروع مع GitHub</h3>
+                    <div class="command">git remote add origin https://github.com/saraa47258-cmd/storeoman.git</div>
+                    <div class="success-box">
+                        تم ربط المشروع مع GitHub بنجاح!
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>التحقق من الربط</h3>
+                    <div class="command">git remote -v</div>
+                    <p>يجب أن ترى رابط GitHub.</p>
+                </div>
+            </div>
+
+            <!-- الجزء 6: سحب الملفات من GitHub -->
+            <div class="section">
+                <h2>📥 الجزء السادس: سحب الملفات من GitHub</h2>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>حفظ ملف .env (مهم جداً!)</h3>
+                    <div class="warning-box">
+                        <strong>⚠️ مهم:</strong> ملف .env يحتوي على إعدادات قاعدة البيانات. يجب حفظه قبل سحب التحديثات!
+                    </div>
+                    <div class="command">cp .env /tmp/storeoman.env.backup</div>
+                    <p>هذا يحفظ نسخة احتياطية من ملف .env</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>سحب الملفات من GitHub</h3>
+                    <div class="command">git pull origin main</div>
+                    <div class="info-box">
+                        إذا طُلب منك اسم المستخدم وكلمة المرور:
+                        <ul>
+                            <li><strong>Username:</strong> saraa47258-cmd</li>
+                            <li><strong>Password:</strong> Personal Access Token (الذي أنشأته سابقاً)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>حل مشكلة تعارض الملفات (إن وجدت)</h3>
+                    <p>إذا ظهرت رسالة "untracked working tree files would be overwritten":</p>
+                    <div class="command">git fetch origin</div>
+                    <div class="command">git reset --hard origin/main</div>
+                    <div class="warning-box">
+                        هذا الأمر سيستبدل جميع الملفات بالملفات من GitHub!
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>استعادة ملف .env</h3>
+                    <div class="command">cp /tmp/storeoman.env.backup .env</div>
+                    <p>هذا يستعيد ملف .env المحفوظ.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>التحقق من الملفات</h3>
+                    <div class="command">ls -la</div>
+                    <p>يجب أن ترى جميع الملفات من GitHub.</p>
+                </div>
+            </div>
+
+            <!-- الجزء 7: إعادة تشغيل المشروع -->
+            <div class="section">
+                <h2>🔄 الجزء السابع: إعادة تشغيل المشروع</h2>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>إعادة تشغيل Docker</h3>
+                    <div class="command">docker-compose restart</div>
+                    <p>أو إذا أردت إعادة بناء:</p>
+                    <div class="command">docker-compose up -d --build</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>التحقق من الحالة</h3>
+                    <div class="command">docker-compose ps</div>
+                    <p>يجب أن ترى جميع الحاويات تعمل.</p>
+                </div>
+            </div>
+
+            <!-- الجزء 8: التحديثات المستقبلية -->
+            <div class="section">
+                <h2>🔄 الجزء الثامن: التحديثات المستقبلية</h2>
+
+                <div class="info-box">
+                    <h3>للسحب من GitHub في المستقبل:</h3>
+                    <div class="command">cd /var/www/alshabibi/storeoman</div>
+                    <div class="command">cp .env /tmp/storeoman.env.backup</div>
+                    <div class="command">git pull origin main</div>
+                    <div class="command">cp /tmp/storeoman.env.backup .env</div>
+                    <div class="command">docker-compose restart</div>
+                </div>
+
+                <div class="success-box">
+                    <h3>أو استخدم السكريبت:</h3>
+                    <div class="command">./update.sh</div>
+                </div>
+            </div>
+
+            <!-- الجزء 9: حل المشاكل -->
+            <div class="section">
+                <h2>🐛 الجزء التاسع: حل المشاكل الشائعة</h2>
+
+                <div class="error-box">
+                    <h4>❌ المشكلة: "fatal: not a git repository"</h4>
+                    <p><strong>الحل:</strong></p>
+                    <div class="command">cd /var/www/alshabibi/storeoman</div>
+                    <div class="command">git init</div>
+                    <div class="command">git remote add origin https://github.com/saraa47258-cmd/storeoman.git</div>
+                </div>
+
+                <div class="error-box">
+                    <h4>❌ المشكلة: "error: The following untracked working tree files would be overwritten"</h4>
+                    <p><strong>الحل:</strong></p>
+                    <div class="command">cp .env /tmp/storeoman.env.backup</div>
+                    <div class="command">git fetch origin</div>
+                    <div class="command">git reset --hard origin/main</div>
+                    <div class="command">cp /tmp/storeoman.env.backup .env</div>
+                </div>
+
+                <div class="error-box">
+                    <h4>❌ المشكلة: "Permission denied"</h4>
+                    <p><strong>الحل:</strong></p>
+                    <div class="command">sudo chown -R $USER:$USER /var/www/alshabibi/storeoman</div>
+                </div>
+
+                <div class="error-box">
+                    <h4>❌ المشكلة: "Authentication failed"</h4>
+                    <p><strong>الحل:</strong></p>
+                    <ul>
+                        <li>تأكد من استخدام Personal Access Token وليس كلمة المرور</li>
+                        <li>تأكد من أن Token لديه صلاحيات repo</li>
+                        <li>أنشئ Token جديد إذا انتهت صلاحيته</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ملخص -->
+            <div class="section">
+                <h2>📋 ملخص الأوامر الكاملة</h2>
+
+                <div class="code-block">
+# 1. الاتصال بـ VPS
+ssh username@your-vps-ip
+
+# 2. تثبيت Git (إذا لم يكن مثبتاً)
+sudo apt update
+sudo apt install -y git
+
+# 3. الانتقال إلى مجلد المشروع
+cd /var/www/alshabibi/storeoman
+
+# 4. تهيئة Git
+git init
+git config user.name "StoreOman VPS"
+git config user.email "vps@storeoman.com"
+
+# 5. ربط مع GitHub
+git remote add origin https://github.com/saraa47258-cmd/storeoman.git
+
+# 6. حفظ ملف .env
+cp .env /tmp/storeoman.env.backup
+
+# 7. سحب الملفات
+git pull origin main
+
+# 8. استعادة ملف .env
+cp /tmp/storeoman.env.backup .env
+
+# 9. إعادة تشغيل Docker
+docker-compose restart
+                </div>
+            </div>
+
+            <!-- خاتمة -->
+            <div class="success-box" style="text-align: center; padding: 30px;">
+                <h2 style="color: #4caf50; margin-bottom: 15px;">✅ تم!</h2>
+                <p style="font-size: 1.2em;">مشروعك الآن مربوط مع GitHub</p>
+                <p style="margin-top: 10px; opacity: 0.8;">يمكنك الآن سحب التحديثات في أي وقت! 🎉</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

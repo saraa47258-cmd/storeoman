@@ -1,0 +1,131 @@
+═══════════════════════════════════════════════════════════
+   دليل ربط مشروع StoreOman مع postgres-docker
+═══════════════════════════════════════════════════════════
+
+📌 هذا الدليل يشرح كيفية ربط مشروع StoreOman مع postgres-docker الموجود
+
+═══════════════════════════════════════════════════════════
+🔍 الخطوة 1: التحقق من postgres-docker
+═══════════════════════════════════════════════════════════
+
+1. تحقق من أن postgres-docker يعمل:
+   docker ps | grep postgres
+
+2. تحقق من اسم network الخاص بـ postgres-docker:
+   docker network ls
+   
+   عادة يكون اسمه: postgres-docker_default
+
+3. تحقق من اسم حاوية PostgreSQL:
+   docker ps | grep postgres
+   
+   عادة يكون: postgres_db
+
+═══════════════════════════════════════════════════════════
+🔧 الخطوة 2: إعداد المشروع
+═══════════════════════════════════════════════════════════
+
+1. إنشاء ملف .env (إذا لم يكن موجوداً):
+   cp env.example .env
+
+2. تعديل ملف .env لإضافة إعدادات PostgreSQL:
+   DB_TYPE=pgsql
+   POSTGRES_HOST=postgres_db
+   POSTGRES_DB=storeoman
+   POSTGRES_USER=postgres
+   POSTGRES_PASSWORD=postgres
+   POSTGRES_PORT=5432
+
+═══════════════════════════════════════════════════════════
+🚀 الخطوة 3: تشغيل المشروع
+═══════════════════════════════════════════════════════════
+
+الطريقة الأولى: استخدام docker-compose.postgres.yml
+   docker-compose -f docker-compose.postgres.yml up -d --build
+
+الطريقة الثانية: استخدام docker-compose.yml العادي
+   docker-compose up -d --build
+
+═══════════════════════════════════════════════════════════
+🗄️  الخطوة 4: إنشاء قاعدة البيانات في PostgreSQL
+═══════════════════════════════════════════════════════════
+
+1. الاتصال بـ PostgreSQL:
+   docker exec -it postgres_db psql -U postgres
+
+2. إنشاء قاعدة البيانات:
+   CREATE DATABASE storeoman;
+
+3. إنشاء المستخدم (إن لم يكن موجوداً):
+   CREATE USER storeoman_user WITH PASSWORD 'storeoman_pass';
+   GRANT ALL PRIVILEGES ON DATABASE storeoman TO storeoman_user;
+
+4. الخروج:
+   \q
+
+5. تنفيذ ملف init-postgres.sql:
+   docker exec -i postgres_db psql -U postgres -d storeoman < init-postgres.sql
+
+   أو يدوياً:
+   docker exec -it postgres_db psql -U postgres -d storeoman
+   ثم انسخ محتوى init-postgres.sql والصقه
+
+═══════════════════════════════════════════════════════════
+✅ الخطوة 5: اختبار الاتصال
+═══════════════════════════════════════════════════════════
+
+1. افتح المتصفح واذهب إلى:
+   http://localhost/test-db.php
+
+2. يجب أن ترى:
+   ✅ الاتصال بقاعدة البيانات نجح!
+   نوع قاعدة البيانات: PGSQL
+
+═══════════════════════════════════════════════════════════
+🔍 التحقق من الربط
+═══════════════════════════════════════════════════════════
+
+1. تحقق من أن الحاويات في نفس network:
+   docker network inspect postgres-docker_default
+
+2. تحقق من أن حاوية PHP يمكنها الوصول لـ PostgreSQL:
+   docker exec storeoman-php ping -c 3 postgres_db
+
+3. تحقق من السجلات:
+   docker-compose logs php
+   docker-compose logs nginx
+
+═══════════════════════════════════════════════════════════
+🐛 حل المشاكل
+═══════════════════════════════════════════════════════════
+
+❌ المشكلة: لا يمكن الاتصال بـ PostgreSQL
+   الحل:
+   1. تحقق من اسم network:
+      docker network ls
+   2. تحقق من اسم حاوية PostgreSQL:
+      docker ps | grep postgres
+   3. تأكد من أن network external: true في docker-compose.yml
+
+❌ المشكلة: قاعدة البيانات غير موجودة
+   الحل:
+   1. أنشئ قاعدة البيانات يدوياً (راجع الخطوة 4)
+   2. أو استخدم pgAdmin على المنفذ 5050
+
+❌ المشكلة: PHP لا يدعم PostgreSQL
+   الحل:
+   1. تأكد من استخدام Dockerfile.php
+   2. أعد بناء الصورة:
+      docker-compose build --no-cache php
+
+═══════════════════════════════════════════════════════════
+📝 ملاحظات مهمة
+═══════════════════════════════════════════════════════════
+
+1. تأكد من أن postgres-docker يعمل قبل تشغيل storeoman
+2. اسم حاوية PostgreSQL يجب أن يكون صحيحاً (عادة postgres_db)
+3. اسم network يجب أن يكون صحيحاً (عادة postgres-docker_default)
+4. يمكنك التحقق من الأسماء باستخدام: docker ps و docker network ls
+5. إذا كان اسم network مختلف، عدل docker-compose.yml
+
+═══════════════════════════════════════════════════════════
