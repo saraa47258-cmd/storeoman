@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - StoreOman Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="admin-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">StoreOman</span>
+                    <span class="logo-sub">لوحة التحكم</span>
+                </div>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="nav-item active">
+                    <a href="#dashboard" class="nav-link" data-page="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>لوحة المعلومات</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#products" class="nav-link" data-page="products">
+                        <i class="fas fa-box"></i>
+                        <span>المنتجات</span>
+                        <span class="badge">24</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#orders" class="nav-link" data-page="orders">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>الطلبات</span>
+                        <span class="badge warning">12</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#customers" class="nav-link" data-page="customers">
+                        <i class="fas fa-users"></i>
+                        <span>العملاء</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#categories" class="nav-link" data-page="categories">
+                        <i class="fas fa-tags"></i>
+                        <span>التصنيفات</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#analytics" class="nav-link" data-page="analytics">
+                        <i class="fas fa-chart-line"></i>
+                        <span>التحليلات</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#messages" class="nav-link" data-page="messages">
+                        <i class="fas fa-envelope"></i>
+                        <span>الرسائل</span>
+                        <span class="badge danger">5</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#settings" class="nav-link" data-page="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>الإعدادات</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="index.html" class="back-to-store">
+                <i class="fas fa-external-link-alt"></i>
+                <span>العودة للمتجر</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-right">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="ابحث هنا...">
+                </div>
+            </div>
+            <div class="header-left">
+                <div class="header-actions">
+                    <button class="action-btn notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                <div class="admin-profile">
+                    <div class="profile-info">
+                        <span class="profile-name">مدير النظام</span>
+                        <span class="profile-role">Admin</span>
+                    </div>
+                    <div class="profile-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Page -->
+        <div class="page-content" id="dashboard-page">
+            <div class="page-header">
+                <div class="page-title">
+                    <h1>لوحة المعلومات</h1>
+                    <p>مرحباً بك في لوحة تحكم StoreOman</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-download"></i>
+                        تحميل التقرير
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">12,450</span>
+                        <span class="stat-label">إجمالي المبيعات (ر.ع)</span>
+                    </div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+12.5%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">384</span>
+                        <span class="stat-label">إجمالي الطلبات</span>
+                    </div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+8.2%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">5,248</span>
+                        <span class="stat-label">إجمالي العملاء</span>
+                    </div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+5.7%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">1,247</span>
+                        <span class="stat-label">إجمالي المنتجات</span>
+                    </div>
+                    <div class="stat-change negative">
+                        <i class="fas fa-arrow-down"></i>
+                        <span>-2.3%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <div class="chart-card large">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-area"></i> إحصائيات المبيعات</h3>
+                        <select class="chart-filter">
+                            <option>هذا الأسبوع</option>
+                            <option>هذا الشهر</option>
+                            <option>هذه السنة</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-placeholder">
+                            <div class="chart-bars">
+                                <div class="bar" style="height: 60%"><span>السبت</span></div>
+                                <div class="bar" style="height: 80%"><span>الأحد</span></div>
+                                <div class="bar" style="height: 45%"><span>الاثنين</span></div>
+                                <div class="bar" style="height: 90%"><span>الثلاثاء</span></div>
+                                <div class="bar" style="height: 70%"><span>الأربعاء</span></div>
+                                <div class="bar" style="height: 85%"><span>الخميس</span></div>
+                                <div class="bar" style="height: 55%"><span>الجمعة</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-pie"></i> توزيع المنتجات</h3>
+                    </div>
+                    <div class="pie-chart">
+                        <div class="pie-item">
+                            <div class="pie-color blue"></div>
+                            <span>الهواتف</span>
+                            <strong>35%</strong>
+                        </div>
+                        <div class="pie-item">
+                            <div class="pie-color green"></div>
+                            <span>اللابتوبات</span>
+                            <strong>25%</strong>
+                        </div>
+                        <div class="pie-item">
+                            <div class="pie-color purple"></div>
+                            <span>الإكسسوارات</span>
+                            <strong>20%</strong>
+                        </div>
+                        <div class="pie-item">
+                            <div class="pie-color orange"></div>
+                            <span>الساعات</span>
+                            <strong>12%</strong>
+                        </div>
+                        <div class="pie-item">
+                            <div class="pie-color red"></div>
+                            <span>أخرى</span>
+                            <strong>8%</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders & Top Products -->
+            <div class="data-section">
+                <div class="data-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-clock"></i> أحدث الطلبات</h3>
+                        <a href="#orders" class="view-all">عرض الكل</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>رقم الطلب</th>
+                                    <th>العميل</th>
+                                    <th>المبلغ</th>
+                                    <th>الحالة</th>
+                                    <th>التاريخ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#ORD-001</td>
+                                    <td>
+                                        <div class="customer-info">
+                                            <div class="customer-avatar">أ</div>
+                                            <span>أحمد المعمري</span>
+                                        </div>
+                                    </td>
+                                    <td>150 ر.ع</td>
+                                    <td><span class="status completed">مكتمل</span></td>
+                                    <td>منذ 5 دقائق</td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-002</td>
+                                    <td>
+                                        <div class="customer-info">
+                                            <div class="customer-avatar">ف</div>
+                                            <span>فاطمة البلوشي</span>
+                                        </div>
+                                    </td>
+                                    <td>320 ر.ع</td>
+                                    <td><span class="status pending">قيد الانتظار</span></td>
+                                    <td>منذ 15 دقيقة</td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-003</td>
+                                    <td>
+                                        <div class="customer-info">
+                                            <div class="customer-avatar">م</div>
+                                            <span>محمد الحارثي</span>
+                                        </div>
+                                    </td>
+                                    <td>85 ر.ع</td>
+                                    <td><span class="status processing">قيد المعالجة</span></td>
+                                    <td>منذ 30 دقيقة</td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-004</td>
+                                    <td>
+                                        <div class="customer-info">
+                                            <div class="customer-avatar">س</div>
+                                            <span>سارة العامري</span>
+                                        </div>
+                                    </td>
+                                    <td>450 ر.ع</td>
+                                    <td><span class="status shipped">تم الشحن</span></td>
+                                    <td>منذ ساعة</td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-005</td>
+                                    <td>
+                                        <div class="customer-info">
+                                            <div class="customer-avatar">خ</div>
+                                            <span>خالد الراشدي</span>
+                                        </div>
+                                    </td>
+                                    <td>200 ر.ع</td>
+                                    <td><span class="status cancelled">ملغي</span></td>
+                                    <td>منذ ساعتين</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-fire"></i> المنتجات الأكثر مبيعاً</h3>
+                        <a href="#products" class="view-all">عرض الكل</a>
+                    </div>
+                    <div class="top-products">
+                        <div class="product-item">
+                            <div class="product-rank">1</div>
+                            <div class="product-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="product-details">
+                                <h4>iPhone 15 Pro Max</h4>
+                                <span>128 مبيعة</span>
+                            </div>
+                            <div class="product-revenue">
+                                <strong>19,200 ر.ع</strong>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-rank">2</div>
+                            <div class="product-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <div class="product-details">
+                                <h4>MacBook Pro M3</h4>
+                                <span>95 مبيعة</span>
+                            </div>
+                            <div class="product-revenue">
+                                <strong>42,750 ر.ع</strong>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-rank">3</div>
+                            <div class="product-icon">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div class="product-details">
+                                <h4>AirPods Pro 2</h4>
+                                <span>203 مبيعة</span>
+                            </div>
+                            <div class="product-revenue">
+                                <strong>16,240 ر.ع</strong>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-rank">4</div>
+                            <div class="product-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="product-details">
+                                <h4>Apple Watch Ultra</h4>
+                                <span>76 مبيعة</span>
+                            </div>
+                            <div class="product-revenue">
+                                <strong>9,120 ر.ع</strong>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-rank">5</div>
+                            <div class="product-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="product-details">
+                                <h4>PlayStation 5</h4>
+                                <span>89 مبيعة</span>
+                            </div>
+                            <div class="product-revenue">
+                                <strong>22,250 ر.ع</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Page -->
+        <div class="page-content hidden" id="products-page">
+            <div class="page-header">
+                <div class="page-title">
+                    <h1>إدارة المنتجات</h1>
+                    <p>إضافة وتعديل وحذف المنتجات</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-primary" onclick="openModal('addProductModal')">
+                        <i class="fas fa-plus"></i>
+                        إضافة منتج
+                    </button>
+                </div>
+            </div>
+
+            <div class="filters-bar">
+                <div class="search-filter">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="ابحث عن منتج...">
+                </div>
+                <div class="filter-group">
+                    <select>
+                        <option>جميع التصنيفات</option>
+                        <option>الهواتف</option>
+                        <option>اللابتوبات</option>
+                        <option>الإكسسوارات</option>
+                        <option>الساعات</option>
+                    </select>
+                    <select>
+                        <option>جميع الحالات</option>
+                        <option>متوفر</option>
+                        <option>نفذ</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="products-table-container">
+                <table class="data-table products-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAll"></th>
+                            <th>المنتج</th>
+                            <th>التصنيف</th>
+                            <th>السعر</th>
+                            <th>المخزون</th>
+                            <th>الحالة</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>
+                                <div class="product-cell">
+                                    <div class="product-thumb">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                    <div class="product-name">
+                                        <h4>iPhone 15 Pro Max</h4>
+                                        <span>SKU: IPHONE15PM</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>الهواتف</td>
+                            <td><strong>150 ر.ع</strong></td>
+                            <td>45</td>
+                            <td><span class="status available">متوفر</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn view" title="عرض">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn delete" title="حذف">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>
+                                <div class="product-cell">
+                                    <div class="product-thumb">
+                                        <i class="fas fa-laptop"></i>
+                                    </div>
+                                    <div class="product-name">
+                                        <h4>MacBook Pro M3</h4>
+                                        <span>SKU: MACBOOKM3</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>اللابتوبات</td>
+                            <td><strong>450 ر.ع</strong></td>
+                            <td>12</td>
+                            <td><span class="status available">متوفر</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn view" title="عرض">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn delete" title="حذف">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>
+                                <div class="product-cell">
+                                    <div class="product-thumb">
+                                        <i class="fas fa-headphones"></i>
+                                    </div>
+                                    <div class="product-name">
+                                        <h4>AirPods Pro 2</h4>
+                                        <span>SKU: AIRPODSP2</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>الإكسسوارات</td>
+                            <td><strong>80 ر.ع</strong></td>
+                            <td>0</td>
+                            <td><span class="status out-of-stock">نفذ</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn view" title="عرض">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn delete" title="حذف">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>
+                                <div class="product-cell">
+                                    <div class="product-thumb">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="product-name">
+                                        <h4>Apple Watch Ultra</h4>
+                                        <span>SKU: AWATCHULTRA</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>الساعات</td>
+                            <td><strong>120 ر.ع</strong></td>
+                            <td>28</td>
+                            <td><span class="status available">متوفر</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn view" title="عرض">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn delete" title="حذف">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>
+                                <div class="product-cell">
+                                    <div class="product-thumb">
+                                        <i class="fas fa-gamepad"></i>
+                                    </div>
+                                    <div class="product-name">
+                                        <h4>PlayStation 5</h4>
+                                        <span>SKU: PS5CONSOLE</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>الألعاب</td>
+                            <td><strong>250 ر.ع</strong></td>
+                            <td>8</td>
+                            <td><span class="status low-stock">مخزون منخفض</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn view" title="عرض">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn delete" title="حذف">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <span>...</span>
+                <button class="page-btn">10</button>
+                <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+            </div>
+        </div>
+
+        <!-- Orders Page -->
+        <div class="page-content hidden" id="orders-page">
+            <div class="page-header">
+                <div class="page-title">
+                    <h1>إدارة الطلبات</h1>
+                    <p>متابعة وإدارة طلبات العملاء</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-outline">
+                        <i class="fas fa-download"></i>
+                        تصدير
+                    </button>
+                </div>
+            </div>
+
+            <div class="order-stats">
+                <div class="order-stat-card">
+                    <div class="stat-icon pending-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-data">
+                        <span class="stat-count">24</span>
+                        <span class="stat-title">قيد الانتظار</span>
+                    </div>
+                </div>
+                <div class="order-stat-card">
+                    <div class="stat-icon processing-icon">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                    <div class="stat-data">
+                        <span class="stat-count">18</span>
+                        <span class="stat-title">قيد المعالجة</span>
+                    </div>
+                </div>
+                <div class="order-stat-card">
+                    <div class="stat-icon shipped-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="stat-data">
+                        <span class="stat-count">42</span>
+                        <span class="stat-title">تم الشحن</span>
+                    </div>
+                </div>
+                <div class="order-stat-card">
+                    <div class="stat-icon completed-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-data">
+                        <span class="stat-count">156</span>
+                        <span class="stat-title">مكتمل</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="data-table orders-table">
+                    <thead>
+                        <tr>
+                            <th>رقم الطلب</th>
+                            <th>العميل</th>
+                            <th>المنتجات</th>
+                            <th>المبلغ</th>
+                            <th>طريقة الدفع</th>
+                            <th>الحالة</th>
+                            <th>التاريخ</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>#ORD-001</strong></td>
+                            <td>
+                                <div class="customer-info">
+                                    <div class="customer-avatar">أ</div>
+                                    <div class="customer-details">
+                                        <span class="customer-name">أحمد المعمري</span>
+                                        <span class="customer-email">ahmed@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>2 منتجات</td>
+                            <td><strong>150 ر.ع</strong></td>
+                            <td><i class="fab fa-cc-visa"></i> بطاقة</td>
+                            <td><span class="status completed">مكتمل</span></td>
+                            <td>28 يناير 2026</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn view" title="عرض">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn print" title="طباعة">
+                                        <i class="fas fa-print"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>#ORD-002</strong></td>
+                            <td>
+                                <div class="customer-info">
+                                    <div class="customer-avatar">ف</div>
+                                    <div class="customer-details">
+                                        <span class="customer-name">فاطمة البلوشي</span>
+                                        <span class="customer-email">fatma@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>1 منتج</td>
+                            <td><strong>320 ر.ع</strong></td>
+                            <td><i class="fab fa-cc-paypal"></i> PayPal</td>
+                            <td><span class="status pending">قيد الانتظار</span></td>
+                            <td>28 يناير 2026</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn view" title="عرض">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn print" title="طباعة">
+                                        <i class="fas fa-print"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>#ORD-003</strong></td>
+                            <td>
+                                <div class="customer-info">
+                                    <div class="customer-avatar">م</div>
+                                    <div class="customer-details">
+                                        <span class="customer-name">محمد الحارثي</span>
+                                        <span class="customer-email">mohammed@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>3 منتجات</td>
+                            <td><strong>85 ر.ع</strong></td>
+                            <td><i class="fas fa-money-bill"></i> نقداً</td>
+                            <td><span class="status processing">قيد المعالجة</span></td>
+                            <td>27 يناير 2026</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn view" title="عرض">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn print" title="طباعة">
+                                        <i class="fas fa-print"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Customers Page -->
+        <div class="page-content hidden" id="customers-page">
+            <div class="page-header">
+                <div class="page-title">
+                    <h1>إدارة العملاء</h1>
+                    <p>عرض وإدارة بيانات العملاء</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i>
+                        إضافة عميل
+                    </button>
+                </div>
+            </div>
+
+            <div class="customers-grid">
+                <div class="customer-card">
+                    <div class="customer-header">
+                        <div class="customer-avatar large">أ</div>
+                        <div class="customer-badge vip">VIP</div>
+                    </div>
+                    <div class="customer-body">
+                        <h3>أحمد المعمري</h3>
+                        <p>ahmed@email.com</p>
+                        <p><i class="fas fa-phone"></i> +968 1234 5678</p>
+                    </div>
+                    <div class="customer-stats">
+                        <div class="stat">
+                            <span class="stat-value">15</span>
+                            <span class="stat-label">طلب</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">2,450</span>
+                            <span class="stat-label">ر.ع</span>
+                        </div>
+                    </div>
+                    <div class="customer-footer">
+                        <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-eye"></i>
+                            عرض
+                        </button>
+                        <button class="btn btn-sm btn-primary">
+                            <i class="fas fa-envelope"></i>
+                            رسالة
+                        </button>
+                    </div>
+                </div>
+
+                <div class="customer-card">
+                    <div class="customer-header">
+                        <div class="customer-avatar large">ف</div>
+                    </div>
+                    <div class="customer-body">
+                        <h3>فاطمة البلوشي</h3>
+                        <p>fatma@email.com</p>
+                        <p><i class="fas fa-phone"></i> +968 9876 5432</p>
+                    </div>
+                    <div class="customer-stats">
+                        <div class="stat">
+                            <span class="stat-value">8</span>
+                            <span class="stat-label">طلب</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">1,120</span>
+                            <span class="stat-label">ر.ع</span>
+                        </div>
+                    </div>
+                    <div class="customer-footer">
+                        <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-eye"></i>
+                            عرض
+                        </button>
+                        <button class="btn btn-sm btn-primary">
+                            <i class="fas fa-envelope"></i>
+                            رسالة
+                        </button>
+                    </div>
+                </div>
+
+                <div class="customer-card">
+                    <div class="customer-header">
+                        <div class="customer-avatar large">م</div>
+                        <div class="customer-badge new">جديد</div>
+                    </div>
+                    <div class="customer-body">
+                        <h3>محمد الحارثي</h3>
+                        <p>mohammed@email.com</p>
+                        <p><i class="fas fa-phone"></i> +968 5555 1234</p>
+                    </div>
+                    <div class="customer-stats">
+                        <div class="stat">
+                            <span class="stat-value">2</span>
+                            <span class="stat-label">طلب</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">185</span>
+                            <span class="stat-label">ر.ع</span>
+                        </div>
+                    </div>
+                    <div class="customer-footer">
+                        <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-eye"></i>
+                            عرض
+                        </button>
+                        <button class="btn btn-sm btn-primary">
+                            <i class="fas fa-envelope"></i>
+                            رسالة
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div class="page-content hidden" id="settings-page">
+            <div class="page-header">
+                <div class="page-title">
+                    <h1>الإعدادات</h1>
+                    <p>إدارة إعدادات المتجر</p>
+                </div>
+            </div>
+
+            <div class="settings-container">
+                <div class="settings-sidebar">
+                    <ul class="settings-nav">
+                        <li class="active"><a href="#"><i class="fas fa-store"></i> إعدادات المتجر</a></li>
+                        <li><a href="#"><i class="fas fa-credit-card"></i> طرق الدفع</a></li>
+                        <li><a href="#"><i class="fas fa-truck"></i> الشحن والتوصيل</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> البريد الإلكتروني</a></li>
+                        <li><a href="#"><i class="fas fa-bell"></i> الإشعارات</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> الأمان</a></li>
+                    </ul>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-section">
+                        <h3>إعدادات المتجر الأساسية</h3>
+                        <div class="form-group">
+                            <label>اسم المتجر</label>
+                            <input type="text" value="StoreOman" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>البريد الإلكتروني</label>
+                            <input type="email" value="info@storeoman.com" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>رقم الهاتف</label>
+                            <input type="tel" value="+968 1234 5678" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>العنوان</label>
+                            <textarea class="form-input">مسقط، سلطنة عُمان، شارع السلطان قابوس</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>العملة</label>
+                            <select class="form-input">
+                                <option selected>ريال عماني (ر.ع)</option>
+                                <option>دولار أمريكي ($)</option>
+                                <option>يورو (€)</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            حفظ التغييرات
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Product Modal -->
+    <div class="modal-overlay" id="addProductModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-plus-circle"></i> إضافة منتج جديد</h3>
+                <button class="modal-close" onclick="closeModal('addProductModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="product-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>اسم المنتج</label>
+                            <input type="text" class="form-input" placeholder="أدخل اسم المنتج">
+                        </div>
+                        <div class="form-group">
+                            <label>SKU</label>
+                            <input type="text" class="form-input" placeholder="SKU-001">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>التصنيف</label>
+                            <select class="form-input">
+                                <option>اختر التصنيف</option>
+                                <option>الهواتف</option>
+                                <option>اللابتوبات</option>
+                                <option>الإكسسوارات</option>
+                                <option>الساعات</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>السعر (ر.ع)</label>
+                            <input type="number" class="form-input" placeholder="0.00">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>الكمية</label>
+                            <input type="number" class="form-input" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>السعر القديم (اختياري)</label>
+                            <input type="number" class="form-input" placeholder="0.00">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>وصف المنتج</label>
+                        <textarea class="form-input" rows="4" placeholder="أدخل وصف المنتج..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>صورة المنتج</label>
+                        <div class="file-upload">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>اسحب وأفلت الصور هنا أو انقر للاختيار</span>
+                            <input type="file" accept="image/*" multiple>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('addProductModal')">إلغاء</button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-save"></i>
+                    حفظ المنتج
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

@@ -3,102 +3,474 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StoreOman - متجر عمان</title>
+    <title>StoreOman - متجر عُمان الإلكتروني</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader">
+            <div class="loader-ring"></div>
+            <span class="loader-text">StoreOman</span>
+        </div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container">
             <div class="logo">
-                <h1>🛍️ StoreOman</h1>
+                <div class="logo-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">StoreOman</span>
+                    <span class="logo-sub">متجر عُمان</span>
+                </div>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#products">المنتجات</a></li>
-                <li><a href="#about">من نحن</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="#products" class="nav-link"><i class="fas fa-box-open"></i> المنتجات</a></li>
+                <li><a href="#features" class="nav-link"><i class="fas fa-star"></i> المميزات</a></li>
+                <li><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> من نحن</a></li>
+                <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+                <li><a href="admin.html" class="nav-link admin-link"><i class="fas fa-user-shield"></i> لوحة التحكم</a></li>
             </ul>
-            <div class="cart-icon">
-                <span>🛒</span>
-                <span class="cart-count">0</span>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="ابحث عن منتج..." id="searchInput">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h2 class="hero-title">مرحباً بك في StoreOman</h2>
-            <p class="hero-subtitle">اكتشف أفضل المنتجات بأسعار منافسة</p>
-            <button class="cta-button">تسوق الآن</button>
+        <div class="hero-bg">
+            <div class="hero-particles" id="particles"></div>
         </div>
-        <div class="hero-image">
-            <div class="hero-shape"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-bolt"></i>
+                    <span>عروض حصرية تصل إلى 50%</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="hero-title-line">مرحباً بك في</span>
+                    <span class="hero-title-main">StoreOman</span>
+                </h1>
+                <p class="hero-subtitle">اكتشف عالماً من المنتجات المميزة بأسعار لا تُقاوم. نوفر لك أفضل تجربة تسوق إلكتروني في سلطنة عُمان</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">
+                        <i class="fas fa-shopping-bag"></i>
+                        تسوق الآن
+                    </a>
+                    <a href="#about" class="btn btn-outline">
+                        <i class="fas fa-play-circle"></i>
+                        اعرف المزيد
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="5000">0</span>
+                        <span class="stat-label">عميل سعيد</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="1200">0</span>
+                        <span class="stat-label">منتج متوفر</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="99">0</span>
+                        <span class="stat-label">% رضا العملاء</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-container">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>هواتف ذكية</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-laptop"></i>
+                        <span>لابتوبات</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-headphones"></i>
+                        <span>سماعات</span>
+                    </div>
+                    <div class="hero-main-shape">
+                        <div class="shape-inner">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,69.3C960,85,1056,107,1152,101.3C1248,96,1344,64,1392,48L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z" fill="currentColor"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="categories-grid">
+                <div class="category-card" data-category="phones">
+                    <div class="category-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>الهواتف</h3>
+                    <span class="category-count">120+ منتج</span>
+                </div>
+                <div class="category-card" data-category="laptops">
+                    <div class="category-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>اللابتوبات</h3>
+                    <span class="category-count">85+ منتج</span>
+                </div>
+                <div class="category-card" data-category="accessories">
+                    <div class="category-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>الإكسسوارات</h3>
+                    <span class="category-count">200+ منتج</span>
+                </div>
+                <div class="category-card" data-category="watches">
+                    <div class="category-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>الساعات</h3>
+                    <span class="category-count">75+ منتج</span>
+                </div>
+                <div class="category-card" data-category="gaming">
+                    <div class="category-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>الألعاب</h3>
+                    <span class="category-count">150+ منتج</span>
+                </div>
+                <div class="category-card" data-category="cameras">
+                    <div class="category-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>الكاميرات</h3>
+                    <span class="category-count">60+ منتج</span>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Products Section -->
     <section id="products" class="products">
         <div class="container">
-            <h2 class="section-title">منتجاتنا المميزة</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">📱</div>
-                    <h3>هاتف ذكي</h3>
-                    <p class="product-description">هاتف ذكي بمواصفات عالية</p>
-                    <div class="product-footer">
-                        <span class="price">150 ر.ع</span>
-                        <button class="add-to-cart">أضف للسلة</button>
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-fire"></i>
+                    <span>الأكثر مبيعاً</span>
+                </div>
+                <h2 class="section-title">منتجاتنا المميزة</h2>
+                <p class="section-subtitle">اكتشف مجموعتنا المتميزة من المنتجات عالية الجودة</p>
+            </div>
+            
+            <div class="products-filter">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="phones">الهواتف</button>
+                <button class="filter-btn" data-filter="laptops">اللابتوبات</button>
+                <button class="filter-btn" data-filter="accessories">الإكسسوارات</button>
+                <button class="filter-btn" data-filter="watches">الساعات</button>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Product Card 1 -->
+                <div class="product-card" data-category="phones">
+                    <div class="product-badge sale">خصم 20%</div>
+                    <div class="product-wishlist">
+                        <i class="far fa-heart"></i>
+                    </div>
+                    <div class="product-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">هواتف ذكية</div>
+                        <h3 class="product-title">iPhone 15 Pro Max</h3>
+                        <p class="product-description">هاتف ذكي بمواصفات خارقة وكاميرا احترافية</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(128 تقييم)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-old">180 ر.ع</span>
+                                <span class="price-current">150 ر.ع</span>
+                            </div>
+                            <button class="add-to-cart-btn">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">💻</div>
-                    <h3>لابتوب</h3>
-                    <p class="product-description">لابتوب عالي الأداء</p>
-                    <div class="product-footer">
-                        <span class="price">450 ر.ع</span>
-                        <button class="add-to-cart">أضف للسلة</button>
+
+                <!-- Product Card 2 -->
+                <div class="product-card" data-category="laptops">
+                    <div class="product-badge new">جديد</div>
+                    <div class="product-wishlist">
+                        <i class="far fa-heart"></i>
+                    </div>
+                    <div class="product-image">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">لابتوبات</div>
+                        <h3 class="product-title">MacBook Pro M3</h3>
+                        <p class="product-description">لابتوب احترافي بمعالج M3 فائق السرعة</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-count">(95 تقييم)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-current">450 ر.ع</span>
+                            </div>
+                            <button class="add-to-cart-btn">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">🎧</div>
-                    <h3>سماعات</h3>
-                    <p class="product-description">سماعات لاسلكية عالية الجودة</p>
-                    <div class="product-footer">
-                        <span class="price">80 ر.ع</span>
-                        <button class="add-to-cart">أضف للسلة</button>
+
+                <!-- Product Card 3 -->
+                <div class="product-card" data-category="accessories">
+                    <div class="product-badge hot">رائج</div>
+                    <div class="product-wishlist">
+                        <i class="far fa-heart"></i>
+                    </div>
+                    <div class="product-image">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">إكسسوارات</div>
+                        <h3 class="product-title">AirPods Pro 2</h3>
+                        <p class="product-description">سماعات لاسلكية بتقنية إلغاء الضوضاء</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(203 تقييم)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-old">95 ر.ع</span>
+                                <span class="price-current">80 ر.ع</span>
+                            </div>
+                            <button class="add-to-cart-btn">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">⌚</div>
-                    <h3>ساعة ذكية</h3>
-                    <p class="product-description">ساعة ذكية متطورة</p>
-                    <div class="product-footer">
-                        <span class="price">120 ر.ع</span>
-                        <button class="add-to-cart">أضف للسلة</button>
+
+                <!-- Product Card 4 -->
+                <div class="product-card" data-category="watches">
+                    <div class="product-wishlist">
+                        <i class="far fa-heart"></i>
+                    </div>
+                    <div class="product-image">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">ساعات ذكية</div>
+                        <h3 class="product-title">Apple Watch Ultra</h3>
+                        <p class="product-description">ساعة ذكية للمغامرات والرياضة</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(76 تقييم)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-current">120 ر.ع</span>
+                            </div>
+                            <button class="add-to-cart-btn">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">📷</div>
-                    <h3>كاميرا</h3>
-                    <p class="product-description">كاميرا احترافية</p>
-                    <div class="product-footer">
-                        <span class="price">300 ر.ع</span>
-                        <button class="add-to-cart">أضف للسلة</button>
+
+                <!-- Product Card 5 -->
+                <div class="product-card" data-category="accessories">
+                    <div class="product-badge sale">خصم 15%</div>
+                    <div class="product-wishlist">
+                        <i class="far fa-heart"></i>
+                    </div>
+                    <div class="product-image">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">كاميرات</div>
+                        <h3 class="product-title">Canon EOS R6</h3>
+                        <p class="product-description">كاميرا احترافية للتصوير السينمائي</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-count">(45 تقييم)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-old">350 ر.ع</span>
+                                <span class="price-current">300 ر.ع</span>
+                            </div>
+                            <button class="add-to-cart-btn">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">🎮</div>
-                    <h3>جهاز ألعاب</h3>
-                    <p class="product-description">جهاز ألعاب حديث</p>
-                    <div class="product-footer">
-                        <span class="price">250 ر.ع</span>
-                        <button class="add-to-cart">أضف للسلة</button>
+
+                <!-- Product Card 6 -->
+                <div class="product-card" data-category="phones">
+                    <div class="product-wishlist">
+                        <i class="far fa-heart"></i>
                     </div>
+                    <div class="product-image">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">ألعاب</div>
+                        <h3 class="product-title">PlayStation 5</h3>
+                        <p class="product-description">جهاز ألعاب الجيل الجديد من سوني</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(189 تقييم)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-current">250 ر.ع</span>
+                            </div>
+                            <button class="add-to-cart-btn">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-cta">
+                <a href="#" class="btn btn-primary btn-lg">
+                    <i class="fas fa-th-large"></i>
+                    عرض جميع المنتجات
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-gem"></i>
+                    <span>لماذا نحن؟</span>
+                </div>
+                <h2 class="section-title">مميزاتنا الفريدة</h2>
+                <p class="section-subtitle">نسعى دائماً لتقديم أفضل خدمة لعملائنا الكرام</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>توصيل سريع</h3>
+                    <p>توصيل مجاني لجميع أنحاء سلطنة عُمان خلال 24-48 ساعة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>دفع آمن</h3>
+                    <p>نوفر طرق دفع متعددة وآمنة 100% مع تشفير كامل للبيانات</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>ضمان الجودة</h3>
+                    <p>جميع منتجاتنا أصلية 100% مع ضمان شامل وخدمة ما بعد البيع</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>دعم متواصل</h3>
+                    <p>فريق دعم فني متخصص على مدار الساعة لخدمتك</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-undo-alt"></i>
+                    </div>
+                    <h3>استرجاع سهل</h3>
+                    <p>سياسة استرجاع مرنة خلال 14 يوم من تاريخ الشراء</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>أسعار منافسة</h3>
+                    <p>نضمن لك أفضل الأسعار في السوق مع عروض مستمرة</p>
                 </div>
             </div>
         </div>
@@ -108,23 +480,146 @@
     <section id="about" class="about">
         <div class="container">
             <div class="about-content">
-                <h2 class="section-title">من نحن</h2>
-                <p>StoreOman هو متجر إلكتروني رائد في سلطنة عمان، نقدم أفضل المنتجات بأسعار تنافسية وجودة عالية. نسعى دائماً لتقديم تجربة تسوق ممتعة وسهلة لعملائنا الكرام.</p>
-                <div class="features">
-                    <div class="feature">
-                        <div class="feature-icon">🚚</div>
-                        <h4>توصيل سريع</h4>
-                        <p>توصيل في جميع أنحاء عمان</p>
+                <div class="about-text">
+                    <div class="section-badge">
+                        <i class="fas fa-building"></i>
+                        <span>قصتنا</span>
                     </div>
-                    <div class="feature">
-                        <div class="feature-icon">💳</div>
-                        <h4>دفع آمن</h4>
-                        <p>طرق دفع متعددة وآمنة</p>
+                    <h2 class="section-title">من نحن</h2>
+                    <p class="about-description">
+                        StoreOman هو متجر إلكتروني رائد في سلطنة عُمان، تأسس عام 2020 بهدف توفير أفضل المنتجات التقنية والإلكترونية بأسعار تنافسية وجودة عالية.
+                    </p>
+                    <p class="about-description">
+                        نفخر بخدمة أكثر من 5000 عميل سعيد، ونسعى دائماً لتقديم تجربة تسوق استثنائية من خلال منتجات أصلية، توصيل سريع، وخدمة عملاء متميزة.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>منتجات أصلية 100%</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>ضمان شامل على كل المنتجات</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>دعم فني على مدار الساعة</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>أسعار منافسة ومحدثة</span>
+                        </div>
                     </div>
-                    <div class="feature">
-                        <div class="feature-icon">✅</div>
-                        <h4>ضمان الجودة</h4>
-                        <p>منتجات أصلية وضمان شامل</p>
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        تواصل معنا
+                    </a>
+                </div>
+                <div class="about-visual">
+                    <div class="about-image">
+                        <div class="about-shape-1"></div>
+                        <div class="about-shape-2"></div>
+                        <div class="about-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                    </div>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-num">5000+</span>
+                                <span class="stat-text">عميل</span>
+                            </div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-box"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-num">1200+</span>
+                                <span class="stat-text">منتج</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-quote-right"></i>
+                    <span>آراء العملاء</span>
+                </div>
+                <h2 class="section-title">ماذا يقول عملاؤنا</h2>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"تجربة تسوق رائعة! المنتجات أصلية والتوصيل كان سريع جداً. سأتعامل معهم مرة أخرى بالتأكيد."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>أحمد المعمري</h4>
+                            <span>مسقط</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"خدمة عملاء ممتازة وأسعار منافسة. استلمت طلبي في اليوم التالي. شكراً StoreOman!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>فاطمة البلوشي</h4>
+                            <span>صلالة</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p>"أفضل متجر إلكتروني في عُمان. المنتجات عالية الجودة والأسعار معقولة جداً."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>محمد الحارثي</h4>
+                            <span>صحار</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -134,36 +629,127 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">اتصل بنا</h2>
-            <div class="contact-content">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>تواصل معنا</span>
+                </div>
+                <h2 class="section-title">نحن هنا لمساعدتك</h2>
+                <p class="section-subtitle">لا تتردد في التواصل معنا لأي استفسار أو مساعدة</p>
+            </div>
+
+            <div class="contact-container">
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <span class="contact-icon">📞</span>
-                        <div>
-                            <h4>الهاتف</h4>
-                            <p>+968 1234 5678</p>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>العنوان</h4>
+                            <p>مسقط، سلطنة عُمان</p>
+                            <p>شارع السلطان قابوس</p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📧</span>
-                        <div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>الهاتف</h4>
+                            <p dir="ltr">+968 1234 5678</p>
+                            <p dir="ltr">+968 9876 5432</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
                             <h4>البريد الإلكتروني</h4>
                             <p>info@storeoman.com</p>
+                            <p>support@storeoman.com</p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📍</span>
-                        <div>
-                            <h4>العنوان</h4>
-                            <p>مسقط، سلطنة عمان</p>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>ساعات العمل</h4>
+                            <p>السبت - الخميس: 9ص - 10م</p>
+                            <p>الجمعة: 2م - 10م</p>
                         </div>
                     </div>
                 </div>
-                <form class="contact-form">
-                    <input type="text" placeholder="الاسم" required>
-                    <input type="email" placeholder="البريد الإلكتروني" required>
-                    <textarea placeholder="الرسالة" rows="5" required></textarea>
-                    <button type="submit">إرسال</button>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">الاسم الكامل</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="name" name="name" placeholder="أدخل اسمك" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" name="email" placeholder="أدخل بريدك الإلكتروني" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="phone" name="phone" placeholder="أدخل رقم هاتفك">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">الموضوع</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-tag"></i>
+                            <select id="subject" name="subject" required>
+                                <option value="">اختر الموضوع</option>
+                                <option value="inquiry">استفسار عام</option>
+                                <option value="order">متابعة طلب</option>
+                                <option value="support">دعم فني</option>
+                                <option value="complaint">شكوى</option>
+                                <option value="other">أخرى</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">الرسالة</label>
+                        <div class="input-wrapper textarea-wrapper">
+                            <i class="fas fa-comment-alt"></i>
+                            <textarea id="message" name="message" rows="5" placeholder="اكتب رسالتك هنا..." required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-paper-plane"></i>
+                        إرسال الرسالة
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h3><i class="fas fa-bell"></i> اشترك في نشرتنا البريدية</h3>
+                    <p>احصل على أحدث العروض والخصومات الحصرية مباشرة إلى بريدك الإلكتروني</p>
+                </div>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        اشتراك
+                    </button>
                 </form>
             </div>
         </div>
@@ -171,48 +757,110 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 StoreOman. جميع الحقوق محفوظة.</p>
-            <div class="social-links">
-                <a href="#">📘</a>
-                <a href="#">📷</a>
-                <a href="#">🐦</a>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-about">
+                        <div class="footer-logo">
+                            <div class="logo-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <span>StoreOman</span>
+                        </div>
+                        <p>متجرك الإلكتروني الأول في سلطنة عُمان لجميع احتياجاتك التقنية والإلكترونية.</p>
+                        <div class="footer-social">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <h4>روابط سريعة</h4>
+                        <ul>
+                            <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                            <li><a href="#products"><i class="fas fa-chevron-left"></i> المنتجات</a></li>
+                            <li><a href="#about"><i class="fas fa-chevron-left"></i> من نحن</a></li>
+                            <li><a href="#contact"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links">
+                        <h4>خدمة العملاء</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-chevron-left"></i> الأسئلة الشائعة</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-left"></i> سياسة الشحن</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-left"></i> سياسة الاسترجاع</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-left"></i> الشروط والأحكام</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h4>تواصل معنا</h4>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt"></i> مسقط، سلطنة عُمان</li>
+                            <li><i class="fas fa-phone-alt"></i> <span dir="ltr">+968 1234 5678</span></li>
+                            <li><i class="fas fa-envelope"></i> info@storeoman.com</li>
+                        </ul>
+                        <div class="payment-methods">
+                            <h5>طرق الدفع المتاحة</h5>
+                            <div class="payment-icons">
+                                <i class="fab fa-cc-visa"></i>
+                                <i class="fab fa-cc-mastercard"></i>
+                                <i class="fab fa-cc-paypal"></i>
+                                <i class="fab fa-cc-apple-pay"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 StoreOman. جميع الحقوق محفوظة. صُنع بـ <i class="fas fa-heart"></i> في عُمان</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Simple cart functionality
-        let cartCount = 0;
-        const addToCartButtons = document.querySelectorAll('.add-to-cart');
-        const cartCountElement = document.querySelector('.cart-count');
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-        addToCartButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                cartCount++;
-                cartCountElement.textContent = cartCount;
-                button.textContent = 'تم الإضافة ✓';
-                button.style.background = '#4CAF50';
-                setTimeout(() => {
-                    button.textContent = 'أضف للسلة';
-                    button.style.background = '';
-                }, 2000);
-            });
-        });
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> سلة التسوق</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-basket"></i>
+                <p>سلة التسوق فارغة</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>المجموع:</span>
+                <span class="total-amount">0 ر.ع</span>
+            </div>
+            <button class="btn btn-primary btn-block checkout-btn">
+                <i class="fas fa-credit-card"></i>
+                إتمام الشراء
+            </button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="toast-message">تمت إضافة المنتج إلى السلة</div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
